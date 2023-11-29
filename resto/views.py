@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Booking, ContactMessage, Chef, GalleryImage, Event, MenuItem, MenuCategory
+from .models import Booking, ContactMessage, Chef, GalleryImage, Event, MenuItem, MenuCategory, Testimonial
 from django.contrib import messages
 
 def index(request):   
@@ -8,13 +8,15 @@ def index(request):
     events_list = Event.objects.all()
     categories = MenuCategory.objects.all()
     menu_items = MenuItem.objects.all()
+    testimonials = Testimonial.objects.all()
+    print(testimonials)
     context = {'images': images,
                'chefs_list': chefs_list,
                'events_list': events_list,
                'categories': categories, 
                'menu_items': menu_items,
+               'testimonials': testimonials
                }
-
     return render(request, 'index.html', context)
 
 def booking(request):

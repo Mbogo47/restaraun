@@ -65,3 +65,17 @@ class MenuItem(models.Model):
 
     def __str__(self):
         return self.name
+
+class Testimonial(models.Model):
+    author_name = models.CharField(max_length=255)
+    role = models.CharField(max_length=100)
+    content = models.TextField()
+    image = models.ImageField(upload_to='testimonials/')
+    stars = models.PositiveIntegerField()
+
+    @property
+    def stars_range(self):
+        return range(self.stars)
+
+    def __str__(self):
+        return self.author_name
