@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Booking, ContactMessage
+from .models import Booking, ContactMessage, Chef
 from django.contrib import messages
 
 def index(request):    
@@ -34,3 +34,9 @@ def contact(request):
         messages.success(request, 'Contact message sent successfully')
         return redirect('index') 
     return render(request, 'contact.html')
+
+def chefs(request):
+    chefs_list = Chef.objects.all()
+    print(chefs_list)
+    context = {'chefs_list': chefs_list}
+    return render(request, 'chefs.html', context)
