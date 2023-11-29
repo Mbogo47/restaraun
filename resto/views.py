@@ -1,14 +1,26 @@
 from django.shortcuts import render, redirect
-from .models import Booking, ContactMessage
+from .models import Booking, ContactMessage, Chef, GalleryImage, Event, MenuItem, MenuCategory, Testimonial
 from django.contrib import messages
 
-def index(request):    
-    return render(request, 'index.html')
+def index(request):   
+    chefs_list = Chef.objects.all()
+    images = GalleryImage.objects.all()
+    events_list = Event.objects.all()
+    categories = MenuCategory.objects.all()
+    menu_items = MenuItem.objects.all()
+    testimonials = Testimonial.objects.all()
+    print(testimonials)
+    context = {'images': images,
+               'chefs_list': chefs_list,
+               'events_list': events_list,
+               'categories': categories, 
+               'menu_items': menu_items,
+               'testimonials': testimonials
+               }
+    return render(request, 'index.html', context)
 
 def booking(request):
-    if request.method == 'POST':
-        print("Booking Form Submitted")
-        
+    if request.method == 'POST':        
         booking_name = request.POST['booking_name']
         booking_email = request.POST['booking_email']
         booking_phone = request.POST['booking_phone']
@@ -24,7 +36,6 @@ def booking(request):
 
 def contact(request):
     if request.method == 'POST' :
-        print("Contact Form Submitted")
         contact_name = request.POST['contact_name']
         contact_email = request.POST['contact_email']
         contact_subject = request.POST['contact_subject']
@@ -34,3 +45,4 @@ def contact(request):
         messages.success(request, 'Contact message sent successfully')
         return redirect('index') 
     return render(request, 'contact.html')
+

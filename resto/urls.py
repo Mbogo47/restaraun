@@ -5,5 +5,4 @@ urlpatterns = [
     path('', index, name='index'),
     path('booking/', booking, name='booking'),
     path('contact/', contact, name='contact'),
-
 ]
