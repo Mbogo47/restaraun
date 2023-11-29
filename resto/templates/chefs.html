@@ -1,7 +1,7 @@
 {% load static %}
 
 
-{% block content %}
+{% block chefs_content %}
     <!-- ======= Chefs Section ======= -->
     <section id="chefs" class="chefs section-bg">
         <div class="container" data-aos="fade-up">
@@ -15,6 +15,7 @@
                         <div class="chef-member">
                             <div class="member-img">
                                 <img src="{{ chef.image.url }}" class="img-fluid" alt="{{ chef.name }}">
+                               
                                 <div class="social">
                                     <a href="{{ chef.twitter_link }}"><i class="bi bi-twitter"></i></a>
                                     <a href="{{ chef.facebook_link }}"><i class="bi bi-facebook"></i></a>

@@ -33,3 +33,35 @@ class Chef(models.Model):
 
     def __str__(self):
         return self.name
+    
+class GalleryImage(models.Model):
+    title = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='gallery/')
+    
+    def __str__(self):
+        return self.title
+    
+class Event(models.Model):
+    title = models.CharField(max_length=255)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+    description = models.TextField()
+    image = models.ImageField(upload_to='events/')
+
+    def __str__(self):
+        return self.title
+    
+class MenuCategory(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+class MenuItem(models.Model):
+    category = models.ForeignKey(MenuCategory, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='menu/')
+    ingredients = models.TextField()
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+
+    def __str__(self):
+        return self.name

@@ -18,22 +18,30 @@
   {% include 'stats.html' %}
 
   <!-- Include Menu Section -->
+  {% block menu_content %}
   {% include 'menu.html' %}
+  {% endblock %}
 
   <!-- Include Testimonials Section -->
   {% include 'testimonials.html' %}
 
   <!-- Include Events Section -->
+  {% block events_content %}
   {% include 'events.html' %}
+  {% endblock %}
 
   <!-- Include Chefs Section -->
+  {% block chefs_content %}
   {% include 'chefs.html' %}
+  {% endblock %}
 
   <!-- Include Book A Table Section -->
   {% include 'book.html' %}
 
   <!-- Include Gallery Section -->
+  {% block gallery_content%}
   {% include 'gallery.html' %}
+  {% endblock %}
 
   <!-- Include Contact Section -->
   {% include 'contact.html' %}
